@@ -1,0 +1,83 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; /* IE浏览器默认模型 border-box的with和height从content算起，不包含border和padding  */
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh; /* 高最小高度为100% */
+    background: url("../imgs/heihei.jpg") no-repeat center;
+    background-size: cover; /* 多余减掉，图片完整 */
+    overflow: hidden;
+}
+.login-box{
+    display: flex;
+    justify-content: center;
+    align-content: space-around;
+    flex-wrap: wrap;
+    width: 600px;
+    height: 400px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 10px;
+    padding: 20px 50px;
+    border-radius: 25px;
+}
+h1{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: aliceblue;
+    font-size: 40px;
+}
+.login-box .input-box{
+    display: flex;
+    flex-wrap:wrap ;
+    justify-content: center;
+    align-items: center;
+    /* transform: translate(); */
+}
+.login-box .input-box .input-text{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.login-box .input-box .input-text span{
+    color: aliceblue;
+    font-size: 20px;
+    margin-top: 20px;
+}
+.login-box .input-box .input-text input{
+    border: 0;
+    padding: 6px ;
+    border-bottom: 1px solid white;
+    background: #ffffff00;
+    color: aliceblue;
+    margin-top: 20px;
+}
+.login-box .input-box .input-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    width: 145px;
+    height: 25px;
+    color: aliceblue;
+    background: linear-gradient(120deg,#a6c0fe 0%,#f68084 100%);
+    border-radius: 25px;
+}
+
+.login-box .input-box .sign-up{
+    width: 100%; /* 内容左靠齐 */
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    color: white;
+    font-size: 17px;
+}
+.login-box .input-box .sign-up a{
+    color: #3498db;
+    text-decoration: none;  /* 清除下划线 */
+}

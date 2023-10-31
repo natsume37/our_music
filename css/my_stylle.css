@@ -31,6 +31,7 @@
     margin-left: 100px;
     position: relative;
     left: -100px;
+    
 }
 .nav_ul li{
     display: inline-block;
@@ -38,10 +39,19 @@
     width: 100px;
     height: 30px;
     text-align: center;
+    
+}
+
+.nav_ul li a:hover{
+  background-color: #0000;
+  color: white;
 }
 .nav_ul li a{
     color: #cccccc;
+    text-decoration: none;
+    text-align: center;
 }
+
 /* nav {
     background-color: #f1f1f1;
     padding: 12px;
