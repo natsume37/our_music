@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="./js/bootstrap-4.6.2-dist/css/bootstrap.css"></script>
+    <link rel="stylesheet" href="./js/bootstrap-4.6.2-dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/my_stylle.css" />
+  </head>
+  <body>
+    <div id="nav">
+      <nav>
+        <div class="logo">
+          <img src="./imgs/Blog.jpg" alt="Logo" />
+        </div>
+        <h2 id="logo">OurMusic</h2>
+        <ul class="nav_ul">
+          <li><a href="#">首页</a></li>
+          <li><a href="#">我的音乐</a></li>
+          <li><a href="#">我的关注</a></li>
+          <li><a href="#">音乐人</a></li>
+        </ul>
+      </nav>
+      <!-- <div class="nav_div2">
+        <ul class="navbar2_ul">
+          <li><a href="#">推荐</a></li>
+          <li><a href="#">排行榜</a></li>
+          <li><a href="#">歌单</a></li>
+        </ul>
+      </div> -->
+    </div>
+
+    <div id="banner_list">
+      <ul id="img_list">
+        <li id="ban_li"><img src="imgs/top_1.jpg" alt="" /></li>
+        <li id="ban_li"><img src="imgs/top_2.jpg" alt="" /></li>
+        <li id="ban_li"><img src="imgs/top_3.jpg" alt="" /></li>
+        <li id="ban_li"><img src="imgs/top_4.jpg" alt="" /></li>
+        <li id="ban_li"><img src="imgs/top_1.jpg" alt="" /></li>
+      </ul>
+      <!-- 原点占位 -->
+      <ul id="icolist">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <div class="prev"><</div>
+      <div class="next">></div>
+    </div>
+    <div class="fire" id="fire">
+      <h2>热门推荐</h2>
+      <ul class="fire_ul">
+        <li><a href="#">华语</a></li>
+        <li><a href="#">流行</a></li>
+        <li><a href="#">摇滚</a></li>
+        <li><a href="#">民谣</a></li>
+        <li><a href="#">电子</a></li>
+      </ul>
+      <hr class="fire_hr" />
+      <div class="fire_list">
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/fire_01.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/fire_02.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/fire_01.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/fire_02.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/fire_01.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/fire_02.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/fire_01.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/fire_02.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // 导航栏鼠标悬停
+      const navItems = document.querySelectorAll(".navbar li");
+
+      navItems.forEach((item) => {
+        item.addEventListener("mouseenter", () => {
+          item.style.color = "#ff6600"; // 悬停时的颜色
+        });
+
+        item.addEventListener("mouseleave", () => {
+          item.style.color = "#fff"; // 恢复默认颜色
+        });
+      });
+
+      let left = 0;
+      let timer;
+      let img_list = document.querySelector("#img_list");
+      let n;
+      let eprv = document.querySelector(".prev");
+      let enext = document.querySelector(".next");
+      let esico = document.querySelector("#icolist").getElementsByTagName("li");
+
+      run();
+      function run() {
+        if (left <= -3200) {
+          left = 0;
+        }
+        var m = Math.floor(-left / 800);
+        img_list.style.marginLeft = left + "px";
+        // 滚完一张图停留1.2s
+        n = left % 800 == 0 ? (n = 1200) : (n = 10);
+        left -= 10;
+        timer = setTimeout(run, n);
+        // 小圆点函数
+        icochange(m);
+      }
+      // 图片定位函数
+      function img_change(num) {
+        let lt = -(num * 800);
+        img_list.style.marginLeft = lt + "px";
+        left = lt;
+      }
+      // 原点跟随变白色
+      function icochange(m) {
+        for (let index = 0; index < esico.length; index++) {
+          esico[index].style.backgroundColor = "";
+        }
+        if (m < esico.length) {
+          esico[m].style.backgroundColor = "#ecd452";
+        }
+      }
+      eprv.addEventListener("click", function () {
+        let prevgo = Math.floor(-left / 800) - 1;
+        // 第一张没有上一张
+        if (prevgo == -1) {
+          prevgo = 3;
+        }
+        img_change(prevgo);
+      });
+      enext.addEventListener("click", function () {
+        let nextgo = Math.floor(-left / 800) + 1;
+        // 第一张没有上一张
+        if (nextgo == 4) {
+          nextgo = 0;
+        }
+        img_change(nextgo);
+      });
+    </script>
+  </body>
+</html>

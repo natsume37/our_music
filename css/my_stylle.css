@@ -1,0 +1,181 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+}
+/* 导航栏 */
+#nav{
+    width: 100%;
+    height: 100px;
+    background-color: #242424;
+}
+#logo{
+    display: inline-block;
+    width: 200px;
+    margin-top: 30px;
+    float: left;
+    color: aliceblue;
+    text-align:center
+}
+.logo img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-top: 15px;
+    margin-left:100px;
+    float: left;
+}
+.nav_ul{
+    float: left;
+    margin-left: 100px;
+    position: relative;
+    left: -100px;
+}
+.nav_ul li{
+    display: inline-block;
+    margin-top: 40px;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+}
+.nav_ul li a{
+    color: #cccccc;
+}
+/* nav {
+    background-color: #f1f1f1;
+    padding: 12px;
+  }
+
+  ul {
+    text-align: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+    margin-right: 40px;
+  }
+
+  a {
+    display: block;
+    padding: 20px;
+    background-color: #ddd;
+    color: #555;
+    font-size: 32px;
+    text-decoration: none;
+  }
+
+  a:hover {
+    background-color: #555;
+    color: #fff;
+  } */
+
+/* 轮播图 */
+#banner_list {
+  width: 800px;
+  height: 400px;
+  margin: 0 auto;
+  /* border: 2px solid #999; */
+  /* 超出部分隐藏 */
+  overflow: hidden;
+  /* 绝对定位 */
+  position: relative;
+}
+#img_list {
+  width: 4000px;
+  height: 400px;
+}
+#img_list img {
+  width: 800px;
+  height: 400px;
+}
+#ban_li {
+  float: left;
+}
+.prev {
+  background: #666;
+  width: 30px;
+  height: 40px;
+  color: #fff;
+  /* 水平垂直居中 */
+  text-align: center;
+  line-height: 30px;
+  position: absolute;
+  left: 5px;
+  top: 45%;
+  /* 鼠标经过改为手指 */
+  cursor: pointer;
+}
+.next {
+  background: #666;
+  width: 30px;
+  height: 40px;
+  color: #fff;
+  /* 水平垂直居中 */
+  text-align: center;
+  line-height: 30px;
+  position: absolute;
+  right: 5px;
+  top: 45%;
+  /* 鼠标经过改为手指 */
+  cursor: pointer;
+}
+#icolist {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+/* 小圆点制作 */
+#icolist li {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #666;
+  float: left;
+  margin-left: 5px;
+  cursor: pointer;
+}
+/* 热门推荐模块 */
+#fire {
+  width: 1200px;
+  height: auto;
+  margin: 0 auto;
+  padding-top: 30px;
+  /* background-color: #666; */
+}
+#fire h2 {
+  font-size: 30px;
+  float: left;
+  margin-right: 20px;
+  padding-left: 30px;
+}
+#fire ul li {
+  display: inline-block;
+}
+#fire ul li a {
+  margin-top: 15px;
+  display: inline-block;
+  width: 50px;
+  text-align: center;
+  color: #666;
+}
+.fire_list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.card {
+  float: left;
+  margin: 20px;
+  padding: 5px;
+}
+.fire_hr {
+  color: #ee7959;
+}
+.fire_hr{
+    color: #ee7959;
+}
