@@ -9,6 +9,8 @@
     <script src="./js/bootstrap-4.6.2-dist/css/bootstrap.css"></script>
     <link rel="stylesheet" href="./js/bootstrap-4.6.2-dist/css/bootstrap.css" />
     <link rel="stylesheet" href="./css/my_style.css" />
+
+    <script src="./js/my_js.js"></script>
   </head>
   <body>
     <div id="nav">
@@ -124,6 +126,17 @@
       </div>
     </footer>
     <script>
+      // 固定导航栏
+      let Head = document.querySelector("#nav");
+      window.onscroll = () => {
+        let top = document.documentElement.scrollTop || document.body.scrollTop;
+        console.log(top);
+        if (top != 0) {
+          Head.style = "position:fixed;top:0;";
+        } else {
+          Head.style = "position:static";
+        }
+      };
       // 导航栏鼠标悬停
       const navItems = document.querySelectorAll(".navbar li");
 

@@ -9,6 +9,8 @@
     width: 100%;
     height: 100px;
     background-color: #242424;
+    /* 设置优先级 */
+    z-index: 10;
 }
 #logo{
     display: inline-block;
