@@ -296,3 +296,28 @@
   font-size: 20px;
   border-bottom: 2px solid #ee7959;
 }
+
+/* 播放器效果 */
+#bang_dan{
+  margin-bottom: 40px;
+}
+#music_out_c{
+  margin-top: 30px;
+  width: 600px;
+  height: 100px;
+  margin: 0 auto;
+  background-color: #d5ebe1;
+  border-radius: 20px 20px 20px 20px;
+}
+#music_out_c span.songs_name{
+  font-size: 20px;
+  display: block;
+  width: 600px;
+  text-align: center;
+  background-color: #d5ebe1;
+}
+#music_out_c audio{
+  display: block;
+  width: 400px;
+  margin: 0 auto;
+}
