@@ -189,7 +189,7 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  background-color: #eccc68;
+  /* background-color: #eccc68; */
 }
 .card {
   float: left;
