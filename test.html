@@ -1,222 +1,273 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title></title>
+    <script
+      src="js/jquery.min.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
+    <style type="text/css">
+      * {
+        margin: 0 auto;
+        padding: 0;
+      }
+      #music-contain {
+        height: 700px;
+        width: 100%;
+        overflow: inherit;
+      }
+      #music-tittle {
+        height: 150px;
+        padding: 20px;
+      }
+      #music-tittle img {
+        background-color: black;
+        height: 90px;
+        width: 90px;
+        border-radius: 60%;
+      }
+      #download-APP {
+        margin-top: 40px;
+        width: 100%;
+        height: 40px;
+        opacity: 0.8;
+      }
+      #music-foot {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .blur {
+        filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+        background-position: center;
+        background-size: cover;
+        width: 130%;
+        -webkit-filter: blur(10px); /* Chrome, Opera */
+        -moz-filter: blur(10px);
+        -ms-filter: blur(10px);
+        filter: blur(10px);
+
+        filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+      }
+      #disc {
+        background-image: url(img/bg4.png);
+        background-size: 100% 100%;
+        /*height: 300px;
+			width: 300px;*/
+        margin-bottom: 40px;
+      }
+      #disc img {
+        height: 55%;
+        width: 55%;
+        border-radius: 60%;
+        margin-top: 22.5%;
+      }
+      #music-play {
+        height: 50px;
+        margin: 0px 20px;
+      }
+      #play {
+        /*音乐播放按钮*/
+        height: 30px;
+        width: 30px;
+      }
+      #music-play > div {
+        float: left;
+      }
+      #progress {
+        width: 65%;
+        height: 30px;
+        padding: 10px;
+      }
+      #music-time {
+        padding: 5px;
+      }
+    </style>
+    <script type="text/javascript">
+      $(function () {
+        //设置disc的样式
+        function setdisc() {
+          var hei = $(window).width();
+          $("#disc").css({
+            height: hei * 0.8,
+            width: hei * 0.8,
+          });
+        }
+
+        $("#play").click(function () {
+          var music = document.getElementById("music");
+          if (music.paused) {
+            music.play();
+            $("#play img").attr("src", "img/pause.png");
+          } else {
+            music.pause();
+            $("#play img").attr("src", "img/play.png");
+          }
+        });
+        function time() {
+          setInterval(function () {
+            var time1 = parseInt(music.currentTime); /*音乐的当前时间*/
+            var time2 = parseInt(music.duration); /*音乐的总时间*/
+            var time11 = parseInt(time1 / 60) + ":" + (time1 % 60);
+            var time22 = parseInt(time2 / 60) + ":" + (time2 % 60);
+            var jing = (time1 / time2) * 100 + "%";
+            $(".progress div").css("width", jing);
+            $("#time1").text(time11);
+            $("#time2").text(time22);
+            //alert(time1+" "+time2);
+          }, 1000);
+        }
+        time();
+        if ($("#music").played) {
+          var time1 = $("#music").currentTime; /*音乐的当前时间*/
+          var time2 = $("#music").duration; /*音乐的总时间*/
+          $("#time1").text(time1);
+          $("#time2").text(time2);
+          //alert(time1+" "+time2);
+        }
+        //alert("pause");
+        else setdisc();
+        if (location.href.indexOf("#reloaded") == -1) {
+          location.href = location.href + "#reloaded";
+          location.reload();
+        }
+      });
+    </script>
+    <script type="text/javascript">
+      $(function () {
+        xuanzhuan(); //头像旋转
+
+        /*获取url中的参数*/
+        function getQueryString(name) {
+          var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+          var r = window.location.search.substr(1).match(reg);
+          if (r != null) {
+            return decodeURIComponent(r[2]);
+          }
+          return null;
+        }
+        // 这样调用：
+        var headImageUrl = getQueryString("headImageUrl"); //头像
+        var imageUrl = getQueryString("imageUrl"); //专辑头（转盘）
+        var userName = getQueryString("userName"); //作者姓名
+        var musicName = getQueryString("musicName"); //歌曲名
+        var dataUrl = getQueryString("dataUrl"); //歌曲
+        /*获取url中的*/
+        function xuanzhuan() {
+          /*作者头像一直旋转*/ var count = 0;
+          var time = setInterval(function () {
+            count += 1;
+            var c = "rotate(" + parseInt(count) + "deg)";
+            $("#disc img").css("transform", c);
+          }, 100);
+        } /*作者头像一直旋转*/
+        $("#download-APP button").mousedown(function () {
+          /*更改下载按钮的透明度*/ $(this).css("opacity", "1");
+        });
+        /*设置作者名和歌曲名*/
+        change();
+        function change() {
+          //$("#media-body").find('h4').text(musicName);
+          //$("#media-body").find('span').text(userName);
+          //$("#headImageUrl").attr('src',headImageUrl);
+          //$("#imageUrl").attr('src',imageUrl);
+          // $("audio").attr('src',dataUrl);
+          //http://127.0.0.1:8020/music/2.html?musicName=南山南&userName=刘德华
+        }
+      });
+    </script>
   </head>
   <body>
-    <div id="nav" class="nav">
-      <div class="top">
-        <div class="lcb">
-          <h1 class="logo">
-            <a hidefocus="true" href="https://music.163.com/#">网易云音乐</a>
-          </h1>
-          <ul class="nav_ul">
-            <li class="fst">
-              <span
-                ><a
-                  href="https://music.163.com/#"
-                  data-module="discover"
-                  class="z-slt"
-                  ><em>发现音乐</em><sub class="cor">&nbsp;</sub></a
-                ></span
-              >
-            </li>
-            <li>
-              <span
-                ><a
-                  data-action="bilog"
-                  data-log-action="page"
-                  data-log-json='{"type":"my"}'
-                  hidefocus="true"
-                  href="https://music.163.com/my/"
-                  data-module="my"
-                  ><em>我的音乐</em><sub class="cor">&nbsp;</sub></a
-                ></span
-              >
-            </li>
-            <li>
-              <span
-                ><a
-                  hidefocus="true"
-                  href="https://music.163.com/friend"
-                  data-module="friend"
-                  data-action="friendlog"
-                  ><em>关注</em><sub class="cor">&nbsp;</sub
-                  ><i class="dot j-t" style="display: none"></i></a
-              ></span>
-            </li>
-            <li>
-              <span
-                ><a
-                  hidefocus="true"
-                  href="https://music.163.com/store/product"
-                  target="_blank"
-                  data-module="store"
-                  ><em>商城</em></a
-                ></span
-              >
-            </li>
-            <li>
-              <span
-                ><a
-                  hidefocus="true"
-                  href="https://music.163.com/musician/artist"
-                  target="_blank"
-                  data-module="musician"
-                  ><em>音乐人</em></a
-                ></span
-              >
-            </li>
-            <li>
-              <span
-                ><a
-                  hidefocus="true"
-                  href="https://music.163.com/st/ad-song"
-                  target="_blank"
-                  data-module="musician"
-                  ><em>云推歌</em></a
-                ></span
-              >
-            </li>
-            <li class="lst">
-              <span
-                ><a
-                  id="topbar-download-link"
-                  data-action="bilog"
-                  data-log-action="page"
-                  data-log-json='{"type":"downloadapp","source":"tab"}'
-                  hidefocus="true"
-                  href="https://music.163.com/download"
-                  data-module="download"
-                  ><em>下载客户端</em><sub class="cor">&nbsp;</sub></a
-                ></span
-              >
-            </li>
-          </ul>
-          <div class="m-tophead f-pr j-tflag" id="auto-id-WBNTFdz3nOU8phG6">
-            <a
-              hidefocus="true"
-              href="https://music.163.com/#"
-              class="link s-fc3"
-              data-action="login"
-              >登录</a
-            >
-            <div class="m-tlist j-uflag" style="display: none">
-              <div class="inner"></div>
-              <i class="arr"></i>
-            </div>
-          </div>
-          <a
-            data-action="bilog"
-            data-log-action="click"
-            data-log-json='{"target":"uploadvideo","page":"homepage"}'
-            href="https://music.163.com/login?targetUrl=%2Fcreatorcenter"
-            target="_blank"
-            class="m-topvd f-pr m-creator-center"
-            >创作者中心</a
-          >
-          <div class="m-srch f-pr j-suggest" id="g_search">
-            <div class="srchbg">
-              <span class="parent">
-                <input
-                  type="text"
-                  name="srch"
-                  id="srch"
-                  class="txt j-flag"
-                  value=""
-                  style="opacity: 1"
-                />
-                <label class="ph j-flag" id="auto-id-PsnrWl3THc9MFLzL"
-                  >音乐/视频/电台/用户</label
-                >
-              </span>
-            </div>
-            <div class="j-showoff u-showoff f-hide">
-              <p>现在支持搜索MV啦~</p>
-            </div>
-            <span
-              class="j-flag"
-              style="display: none"
-              id="auto-id-Ap7LLWyCCvIvaFtX"
-              >&nbsp;</span
-            >
-            <div
-              class="u-lstlay j-flag"
-              style="display: none"
-              id="auto-id-mPfbS4fWzullTeTP"
-            ></div>
-          </div>
+    <img
+      src="http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=32c015eaf6039245b5b8e94ceffdceb7/d788d43f8794a4c28c10040c04f41bd5ad6e39e2.jpg"
+      class="blur navbar-fixed-top"
+    />
+    <div id="music-contain" class="navbar-fixed-top"></div>
+    <div id="music-tittle" class="navbar-fixed-top">
+      <!--头像、名称放置在这里-->
+      <div class="media">
+        <div class="media-left">
+          <a href="#">
+            <img
+              class="media-object"
+              id="headImageUrl"
+              src="img/bgimg2.jpg"
+              alt="..."
+            />
+          </a>
         </div>
-      </div>
-      <div class="m-subnav m-subnav-up f-pr j-tflag f-hide"></div>
-      <div id="g_nav2" class="m-subnav j-tflag">
-        <div class="wrap f-pr">
-          <ul class="nav">
-            <li>
-              <a
-                hidefocus="true"
-                data-module="discover"
-                href="https://music.163.com/discover"
-                class="z-slt"
-                ><em>推荐</em></a
-              >
-            </li>
-            <li>
-              <a
-                hidefocus="true"
-                data-module="toplist"
-                href="https://music.163.com/discover/toplist"
-                ><em>排行榜</em></a
-              >
-            </li>
-            <li>
-              <a
-                hidefocus="true"
-                data-module="playlist"
-                href="https://music.163.com/discover/playlist"
-                ><em class="f-pr" style="padding: 0 15px 0 11px"
-                  >歌单<span
-                    class="f-pa f-r-white-icon"
-                    style="
-                      display: inline-block;
-                      width: 8px;
-                      height: 8px;
-                      top: 2px;
-                      background-size: cover;
-                    "
-                  ></span></em
-              ></a>
-            </li>
-            <li>
-              <a
-                hidefocus="true"
-                data-module="djradio"
-                href="https://music.163.com/discover/djradio"
-                ><em>主播电台</em></a
-              >
-            </li>
-            <li>
-              <a
-                hidefocus="true"
-                data-module="artist"
-                href="https://music.163.com/discover/artist"
-                ><em>歌手</em></a
-              >
-            </li>
-            <li>
-              <a
-                hidefocus="true"
-                data-module="album"
-                href="https://music.163.com/discover/album"
-                ><em>新碟上架</em></a
-              >
-            </li>
-          </ul>
+        <div class="media-body" id="media-body" style="padding: 10px">
+          <h4 class="media-heading" style="padding: 10px">Media heading</h4>
+          <span id="" style="padding: 10px">作者 </span>
         </div>
       </div>
     </div>
+    <!--头像、名称放置在这里-->
+    <div id="music-body" style="margin: 150px 0"></div>
+
+    <div id="music-foot" class="navbar-fixed-bottom">
+      <!--音乐滚动条放置-->
+      <div id="disc">
+        <!--存放碟片，头像转动-->
+        <!--<div id="music-pho">-->
+        <img id="imageUrl" src="img/bgimg2.jpg" />
+        <!--</div>-->
+      </div>
+      <div id="music-play">
+        <!--音乐控制组件-->
+        <div id="play"><img src="img/pause.png" /></div>
+        <div id="progress">
+          <div class="progress">
+            <div
+              id=" progress-tiao"
+              class="progress-bar progress-bar-success"
+              role="progressbar"
+              aria-valuenow="40"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style="width: 0%"
+            ></div>
+          </div>
+        </div>
+        <div id="music-time">
+          <span id="time1">12</span>/<span id="time2">34</span>
+        </div>
+      </div>
+      <!--音乐控制组件-->
+      <audio
+        id="music"
+        controls="controls"
+        autoplay=""
+        loop="loop"
+        preload="auto"
+      >
+        你的浏览器不支持audio标签
+        <source src="img/1.mp3" type="audio/mp3" />
+      </audio>
+      <div id="download-APP">
+        <div style="float: left; margin-left: 30px">
+          <img
+            style="height: 40px; width: 40px; margin-right: 20px"
+            src="img/f.gif"
+            alt=""
+          />汇泉音乐
+        </div>
+        <div style="float: right; margin-right: 30px">
+          <a href="http://www.baidu.com"
+            ><button class="btn btn-primary" style="margin-right: 0px">
+              下载app
+            </button></a
+          >
+        </div>
+      </div>
+    </div>
+    <!--音乐滚动条放置-->
   </body>
 </html>

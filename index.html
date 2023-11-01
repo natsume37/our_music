@@ -118,13 +118,93 @@
     </div>
     <hr />
     <div id="music_out"></div>
+    <div id="bang_dan">
+      <h2>榜单</h2>
+      <hr
+        width="80%"
+        size="3"
+        color="#ee7959"
+        style="filter: alpha(opacity=100, finishopacity=0, style=1)"
+      />
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <div id="bang_list">
+              <ul class="list-group">
+                <li class="list-group-item bang_ceshi">榜单</li>
+                <li class="list-group-item"><a href="">十年</a></li>
+                <li class="list-group-item"><a href=""></a></li>
+                <li class="list-group-item">A third item</li>
+                <li class="list-group-item">A fourth item</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div id="bang_list">
+              <ul class="list-group">
+                <li class="list-group-item bang_ceshi">新歌榜</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+                <li class="list-group-item">A fourth item</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div id="bang_list">
+              <ul class="list-group">
+                <li class="list-group-item bang_ceshi">原创榜</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+                <li class="list-group-item">A fourth item</li>
+                <li class="list-group-item">And a fifth one</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer>
-      <div id="foot">
+      <div id="footer">
+        <box id="footer_box1">
+          <a href="#" class="footer_a">服务条款</a>
+          <a href="#" class="footer_a">隐私政策</a>
+          <a href="#" class="footer_a">儿童隐私政策</a>
+          <a href="#" class="footer_a">版权投诉</a>
+          <a href="#" class="footer_a">投资者关系</a>
+          <a href="#" class="footer_a">广告合作</a>
+          <a href="#" class="footer_a">联系我们</a>
+        </box>
+        <box id="footer_box2">
+          <a href="#" class="footer_a">廉正举报</a>
+          <div>
+            不良信息举报邮箱:
+            <a href="#" class="footer_a">51jubao@service.netease.com</a>
+          </div>
+          <div>
+            客服热线：
+            <a href="#" class="footer_a">95163298</a>
+          </div>
+        </box>
+
         <a href="#" class="badge badge-primary">about our</a>
         <a href="#" class="badge badge-secondary">gitHub</a>
         <a href="#" class="badge badge-success">Blog</a>
       </div>
+      <button id="backToTopBtn" onclick="scrollToTop()">返回顶部</button>
     </footer>
+    <div id="music_out">
+      <div class="music_bor">
+        <img src="" alt="" id="up_music" />
+        <img src="" alt="" id="out_music" />
+        <img src="" alt="" id="next_music" />
+      </div>
+      <div class="music_but">
+        <img src="" alt="" />
+        <audio src="">网易云</audio>
+      </div>
+    </div>
     <script>
       // 固定导航栏
       let Head = document.querySelector("#nav");
@@ -203,6 +283,29 @@
         }
         img_change(nextgo);
       });
+      // foot
+      window.onscroll = function () {
+        scrollFunction();
+      };
+
+      function scrollFunction() {
+        if (
+          document.body.scrollTop > 10 ||
+          document.documentElement.scrollTop > 10
+        ) {
+          // 显示返回顶部按钮
+          document.getElementById("backToTopBtn").style.display = "block";
+        } else {
+          // 隐藏返回顶部按钮
+          document.getElementById("backToTopBtn").style.display = "none";
+        }
+      }
+
+      // 平滑滚动到页面顶部
+      function scrollToTop() {
+        document.body.scrollTop = 0; // Safari
+        document.documentElement.scrollTop = 0; // Chrome, Firefox, IE and Opera
+      }
     </script>
   </body>
 </html>
