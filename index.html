@@ -9,8 +9,6 @@
     <script src="./js/bootstrap-4.6.2-dist/css/bootstrap.css"></script>
     <link rel="stylesheet" href="./js/bootstrap-4.6.2-dist/css/bootstrap.css" />
     <link rel="stylesheet" href="./css/my_style.css" />
-
-    <script src="./js/my_js.js"></script>
   </head>
   <body>
     <div id="nav">
@@ -25,6 +23,8 @@
           <li><a href="#">我的关注</a></li>
           <li><a href="#">音乐人</a></li>
         </ul>
+        <input id="search_my" type="text" />
+        <button id="btn_my" type="button">搜索</button>
       </nav>
       <div class="nav_div2">
         <ul class="navbar2_ul">
@@ -58,58 +58,161 @@
     <div class="fire" id="fire">
       <h2>热门推荐</h2>
       <ul class="fire_ul">
-        <li><a href="#">华语</a></li>
+        <li><a href="#" class="red_show_fire">华语</a></li>
         <li><a href="#">流行</a></li>
         <li><a href="#">摇滚</a></li>
-        <li><a href="#">民谣</a></li>
-        <li><a href="#">电子</a></li>
       </ul>
       <hr class="fire_hr" />
+      <div class="fire_list" id="show_fire" style="display: inline-block">
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/remen/remen_1.jpg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/remen/remen_2.jpg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/remen/remen_3.jpg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/remen/remen_4.jpg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/remen/remen_5.jpg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/remen/remen_6.jpg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/remen/remen_7.jpg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/remen/remen_8.jpg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+      </div>
       <div class="fire_list">
         <div class="card" style="width: 14rem">
-          <img src="./imgs/fire_01.png" class="card-img-top" alt="..." />
+          <img src="./imgs/gedan/gedan_1.jpg" class="card-img-top" alt="..." />
           <div class="card-body">
             <p class="card-text">测试文件</p>
           </div>
         </div>
         <div class="card" style="width: 14rem">
-          <img src="./imgs/fire_02.png" class="card-img-top" alt="..." />
+          <img src="./imgs/gedan/gedan_2.jpg" class="card-img-top" alt="..." />
           <div class="card-body">
             <p class="card-text">测试文件</p>
           </div>
         </div>
         <div class="card" style="width: 14rem">
-          <img src="./imgs/fire_01.png" class="card-img-top" alt="..." />
+          <img src="./imgs/gedan/gedan_3.jpg" class="card-img-top" alt="..." />
           <div class="card-body">
             <p class="card-text">测试文件</p>
           </div>
         </div>
         <div class="card" style="width: 14rem">
-          <img src="./imgs/fire_02.png" class="card-img-top" alt="..." />
+          <img src="./imgs/gedan/gedan_4.jpg" class="card-img-top" alt="..." />
           <div class="card-body">
             <p class="card-text">测试文件</p>
           </div>
         </div>
         <div class="card" style="width: 14rem">
-          <img src="./imgs/fire_01.png" class="card-img-top" alt="..." />
+          <img src="./imgs/gedan/gedan_5.jpg" class="card-img-top" alt="..." />
           <div class="card-body">
             <p class="card-text">测试文件</p>
           </div>
         </div>
         <div class="card" style="width: 14rem">
-          <img src="./imgs/fire_02.png" class="card-img-top" alt="..." />
+          <img
+            src="./imgs/gedan/gedan_6.jpg
+          "
+            class="card-img-top"
+            alt="..."
+          />
           <div class="card-body">
             <p class="card-text">测试文件</p>
           </div>
         </div>
         <div class="card" style="width: 14rem">
-          <img src="./imgs/fire_01.png" class="card-img-top" alt="..." />
+          <img src="./imgs/remen/remen_7.jpg" class="card-img-top" alt="..." />
           <div class="card-body">
             <p class="card-text">测试文件</p>
           </div>
         </div>
         <div class="card" style="width: 14rem">
-          <img src="./imgs/fire_02.png" class="card-img-top" alt="..." />
+          <img src="./imgs/remen/remen_8.jpg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+      </div>
+      <div class="fire_list">
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/remen/remen_1.jpg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/remen/remen_2.jpg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/remen/remen_3.jpg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/remen/remen_4.jpg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/remen/remen_5.jpg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/remen/remen_6.jpg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/remen/remen_7.jpg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text">测试文件</p>
+          </div>
+        </div>
+        <div class="card" style="width: 14rem">
+          <img src="./imgs/remen/remen_8.jpg" class="card-img-top" alt="..." />
           <div class="card-body">
             <p class="card-text">测试文件</p>
           </div>
@@ -187,6 +290,10 @@
             <a href="#" class="footer_a">95163298</a>
           </div>
         </box>
+        <box class="itme">
+          <p id="timeDate"></p>
+          <p id="times"></p>
+        </box>
 
         <a href="#" class="badge badge-primary">about our</a>
         <a href="#" class="badge badge-secondary">gitHub</a>
@@ -194,6 +301,7 @@
       </div>
       <button id="backToTopBtn" onclick="scrollToTop()">返回顶部</button>
     </footer>
+
     <div id="music_out">
       <div class="music_bor">
         <img src="" alt="" id="up_music" />
@@ -206,17 +314,6 @@
       </div>
     </div>
     <script>
-      // 固定导航栏
-      let Head = document.querySelector("#nav");
-      window.onscroll = () => {
-        let top = document.documentElement.scrollTop || document.body.scrollTop;
-        console.log(top);
-        if (top != 0) {
-          Head.style = "position:fixed;top:0;";
-        } else {
-          Head.style = "position:static";
-        }
-      };
       // 导航栏鼠标悬停
       const navItems = document.querySelectorAll(".navbar li");
 
@@ -305,6 +402,64 @@
       function scrollToTop() {
         document.body.scrollTop = 0; // Safari
         document.documentElement.scrollTop = 0; // Chrome, Firefox, IE and Opera
+      }
+      // 时间
+      let now = new Date();
+      function createtime() {
+        let grt = new Date("11/1/2023 00:00:00"); //修改建站时间
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+          hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+          mnum = "0" + mnum;
+        }
+        seconds =
+          (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+          snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML =
+          "本站安全运行 " + dnum + " 天";
+        document.getElementById("times").innerHTML =
+          hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+      }
+      setInterval("createtime()", 250);
+      // 固定导航栏
+      let Head = document.querySelector("#nav");
+      window.onscroll = () => {
+        let top = document.documentElement.scrollTop || document.body.scrollTop;
+        console.log(top);
+        if (top != 0) {
+          Head.style = "position:fixed;top:0;";
+        } else {
+          Head.style = "position:static";
+        }
+      };
+    </script>
+    <script>
+      // tab栏切换
+      let li_shows = document.querySelectorAll(".fire_ul li a");
+      let div_shows = document.querySelectorAll(".fire_list");
+      console.log(div_shows.length);
+      for (let index = 0; index < li_shows.length; index++) {
+        li_shows[index].addEventListener("click", function () {
+          for (let j of li_shows) {
+            j.className = "";
+          }
+          li_shows[index].className = "red_show_fire";
+          for (let div of div_shows) {
+            div.style.display = "none";
+          }
+          div_shows[index].style.display = "inline-block";
+        });
       }
     </script>
   </body>

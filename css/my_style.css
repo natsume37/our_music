@@ -79,6 +79,14 @@
   color: #666;
   cursor: pointer;
 }
+/* 搜索框 */
+#search_my{
+  border-radius: 20px 20px;
+  margin-top: 40px;
+}
+#btn_my{
+  border-radius: 5px 5px;
+}
 /* 轮播图 */
 #banner_list {
   width: 800px;
@@ -175,14 +183,19 @@
   color: #666;
 }
 .fire_list {
+  width: 1200px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  background-color: #eccc68;
 }
 .card {
   float: left;
-  margin: 20px;
+  margin-left: 35px;
+  margin-right: 35px;
+  margin-top: 20px;
   padding: 5px;
 }
 .fire_hr {
@@ -274,4 +287,12 @@
 
 #backToTopBtn:hover {
   background-color: #555;
+}
+/* 热歌榜tab栏切换 */
+.fire_list{
+  display: none;
+}
+.fire_ul .red_show_fire{
+  font-size: 20px;
+  border-bottom: 2px solid #ee7959;
 }

@@ -1,273 +1,263 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <title></title>
-    <script
-      src="js/jquery.min.js"
-      type="text/javascript"
-      charset="utf-8"
-    ></script>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
-    <style type="text/css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="./js/bootstrap-4.6.2-dist/css/bootstrap.css"></script>
+    <link rel="stylesheet" href="./js/bootstrap-4.6.2-dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/my_style.css" />
+
+    <script src="./js/my_js.js"></script>
+    <style>
       * {
-        margin: 0 auto;
+        margin: 0;
         padding: 0;
       }
-      #music-contain {
-        height: 700px;
-        width: 100%;
-        overflow: inherit;
-      }
-      #music-tittle {
-        height: 150px;
-        padding: 20px;
-      }
-      #music-tittle img {
-        background-color: black;
-        height: 90px;
-        width: 90px;
-        border-radius: 60%;
-      }
-      #download-APP {
-        margin-top: 40px;
-        width: 100%;
-        height: 40px;
-        opacity: 0.8;
-      }
-      #music-foot {
-        text-align: center;
-        margin-bottom: 40px;
-      }
-      .blur {
-        filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
-        background-position: center;
-        background-size: cover;
-        width: 130%;
-        -webkit-filter: blur(10px); /* Chrome, Opera */
-        -moz-filter: blur(10px);
-        -ms-filter: blur(10px);
-        filter: blur(10px);
 
-        filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+      li {
+        list-style: none;
       }
-      #disc {
-        background-image: url(img/bg4.png);
-        background-size: 100% 100%;
-        /*height: 300px;
-			width: 300px;*/
-        margin-bottom: 40px;
+
+      .tab {
+        width: 800px;
+        height: 300px;
+        margin: 100px auto;
+        border: 1px solid #ccc;
       }
-      #disc img {
-        height: 55%;
-        width: 55%;
-        border-radius: 60%;
-        margin-top: 22.5%;
+
+      .tab_list {
+        height: 39px;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
       }
-      #music-play {
-        height: 50px;
-        margin: 0px 20px;
-      }
-      #play {
-        /*音乐播放按钮*/
-        height: 30px;
-        width: 30px;
-      }
-      #music-play > div {
+
+      .tab_list li {
         float: left;
+        height: 39px;
+        line-height: 39px;
+        padding: 0 20px;
+        text-align: center;
+        cursor: pointer;
       }
-      #progress {
-        width: 65%;
-        height: 30px;
-        padding: 10px;
+
+      .tab_list .current {
+        background-color: #c81623;
+        color: #fff;
       }
-      #music-time {
-        padding: 5px;
+
+      .item {
+        display: none;
       }
     </style>
-    <script type="text/javascript">
-      $(function () {
-        //设置disc的样式
-        function setdisc() {
-          var hei = $(window).width();
-          $("#disc").css({
-            height: hei * 0.8,
-            width: hei * 0.8,
-          });
-        }
-
-        $("#play").click(function () {
-          var music = document.getElementById("music");
-          if (music.paused) {
-            music.play();
-            $("#play img").attr("src", "img/pause.png");
-          } else {
-            music.pause();
-            $("#play img").attr("src", "img/play.png");
-          }
-        });
-        function time() {
-          setInterval(function () {
-            var time1 = parseInt(music.currentTime); /*音乐的当前时间*/
-            var time2 = parseInt(music.duration); /*音乐的总时间*/
-            var time11 = parseInt(time1 / 60) + ":" + (time1 % 60);
-            var time22 = parseInt(time2 / 60) + ":" + (time2 % 60);
-            var jing = (time1 / time2) * 100 + "%";
-            $(".progress div").css("width", jing);
-            $("#time1").text(time11);
-            $("#time2").text(time22);
-            //alert(time1+" "+time2);
-          }, 1000);
-        }
-        time();
-        if ($("#music").played) {
-          var time1 = $("#music").currentTime; /*音乐的当前时间*/
-          var time2 = $("#music").duration; /*音乐的总时间*/
-          $("#time1").text(time1);
-          $("#time2").text(time2);
-          //alert(time1+" "+time2);
-        }
-        //alert("pause");
-        else setdisc();
-        if (location.href.indexOf("#reloaded") == -1) {
-          location.href = location.href + "#reloaded";
-          location.reload();
-        }
-      });
-    </script>
-    <script type="text/javascript">
-      $(function () {
-        xuanzhuan(); //头像旋转
-
-        /*获取url中的参数*/
-        function getQueryString(name) {
-          var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-          var r = window.location.search.substr(1).match(reg);
-          if (r != null) {
-            return decodeURIComponent(r[2]);
-          }
-          return null;
-        }
-        // 这样调用：
-        var headImageUrl = getQueryString("headImageUrl"); //头像
-        var imageUrl = getQueryString("imageUrl"); //专辑头（转盘）
-        var userName = getQueryString("userName"); //作者姓名
-        var musicName = getQueryString("musicName"); //歌曲名
-        var dataUrl = getQueryString("dataUrl"); //歌曲
-        /*获取url中的*/
-        function xuanzhuan() {
-          /*作者头像一直旋转*/ var count = 0;
-          var time = setInterval(function () {
-            count += 1;
-            var c = "rotate(" + parseInt(count) + "deg)";
-            $("#disc img").css("transform", c);
-          }, 100);
-        } /*作者头像一直旋转*/
-        $("#download-APP button").mousedown(function () {
-          /*更改下载按钮的透明度*/ $(this).css("opacity", "1");
-        });
-        /*设置作者名和歌曲名*/
-        change();
-        function change() {
-          //$("#media-body").find('h4').text(musicName);
-          //$("#media-body").find('span').text(userName);
-          //$("#headImageUrl").attr('src',headImageUrl);
-          //$("#imageUrl").attr('src',imageUrl);
-          // $("audio").attr('src',dataUrl);
-          //http://127.0.0.1:8020/music/2.html?musicName=南山南&userName=刘德华
-        }
-      });
-    </script>
   </head>
   <body>
-    <img
-      src="http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=32c015eaf6039245b5b8e94ceffdceb7/d788d43f8794a4c28c10040c04f41bd5ad6e39e2.jpg"
-      class="blur navbar-fixed-top"
-    />
-    <div id="music-contain" class="navbar-fixed-top"></div>
-    <div id="music-tittle" class="navbar-fixed-top">
-      <!--头像、名称放置在这里-->
-      <div class="media">
-        <div class="media-left">
-          <a href="#">
-            <img
-              class="media-object"
-              id="headImageUrl"
-              src="img/bgimg2.jpg"
-              alt="..."
-            />
-          </a>
-        </div>
-        <div class="media-body" id="media-body" style="padding: 10px">
-          <h4 class="media-heading" style="padding: 10px">Media heading</h4>
-          <span id="" style="padding: 10px">作者 </span>
-        </div>
+    <div class="tab">
+      <div class="tab_list">
+        <ul>
+          <li class="current"><a href="#">华语</a></li>
+          <li><a href="#">流行</a></li>
+          <li><a href="#">摇滚</a></li>
+          <li><a href="#">民谣</a></li>
+          <li><a href="#">电子</a></li>
+        </ul>
       </div>
-    </div>
-    <!--头像、名称放置在这里-->
-    <div id="music-body" style="margin: 150px 0"></div>
-
-    <div id="music-foot" class="navbar-fixed-bottom">
-      <!--音乐滚动条放置-->
-      <div id="disc">
-        <!--存放碟片，头像转动-->
-        <!--<div id="music-pho">-->
-        <img id="imageUrl" src="img/bgimg2.jpg" />
-        <!--</div>-->
-      </div>
-      <div id="music-play">
-        <!--音乐控制组件-->
-        <div id="play"><img src="img/pause.png" /></div>
-        <div id="progress">
-          <div class="progress">
-            <div
-              id=" progress-tiao"
-              class="progress-bar progress-bar-success"
-              role="progressbar"
-              aria-valuenow="40"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              style="width: 0%"
-            ></div>
+      <hr class="fire_hr" />
+      <div class="tab_con">
+        <div class="item" style="display: block">
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_1.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_2.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_3.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_4.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_5.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_6.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_7.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_8.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
           </div>
         </div>
-        <div id="music-time">
-          <span id="time1">12</span>/<span id="time2">34</span>
+        <div class="item">
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_1.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_2.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_3.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_4.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_5.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_6.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_7.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_8.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
         </div>
-      </div>
-      <!--音乐控制组件-->
-      <audio
-        id="music"
-        controls="controls"
-        autoplay=""
-        loop="loop"
-        preload="auto"
-      >
-        你的浏览器不支持audio标签
-        <source src="img/1.mp3" type="audio/mp3" />
-      </audio>
-      <div id="download-APP">
-        <div style="float: left; margin-left: 30px">
-          <img
-            style="height: 40px; width: 40px; margin-right: 20px"
-            src="img/f.gif"
-            alt=""
-          />汇泉音乐
         </div>
-        <div style="float: right; margin-right: 30px">
-          <a href="http://www.baidu.com"
-            ><button class="btn btn-primary" style="margin-right: 0px">
-              下载app
-            </button></a
-          >
+        <div class="item">
+          <div class="card" style="width: 14rem">
+            <img
+              src="./imgs/remen/remen_2.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_1.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_2.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_3.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_4.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_5.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_6.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_7.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+          <div class="card" style="width: 14rem">
+            <img src="./imgs/remen/remen_8.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">测试文件</p>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
     </div>
-    <!--音乐滚动条放置-->
+    <script>
+      // tab 中的第一部分 先完成这一部分效果：点击选项卡某一个时候，当前底色会是红色的，其他的不变，这里用到排他思想
+      // 1 获取元素  选项卡中的各个小li  要被点击选中
+      var tab_list = document.querySelector(".tab_list");
+      var lis = tab_list.querySelectorAll("li");
+      var items = document.querySelectorAll(".item");
+      //for 循环绑定点击事件
+      for (var i = 0; i < lis.length; i++) {
+        lis[i].setAttribute("index", i); //通过自定义属性 设置了索引号
+
+        lis[i].onclick = function () {
+          for (var i = 0; i < lis.length; i++) {
+            lis[i].className = ""; //排他思想  干掉所有人  其余的li都清除掉class这个类
+          }
+          this.className = "current"; // 留下自己
+
+          var index = this.getAttribute("index"); //把通过 自定义属性index索引号 获取到上面 li 的值赋值给变量index (这里就名字相同而已)
+          console.log(index); // 这个可测试分别点击后，有没有得到上面的每个小li
+
+          //然后 排他思想 把其他的效果清空，只设置自己的
+          for (var i = 0; i < items.length; i++) {
+            items[i].style.display = "none";
+          }
+          items[index].style.display = "block"; //这里的index就是上面那个变量
+        };
+      }
+    </script>
   </body>
 </html>
