@@ -254,6 +254,9 @@
   /* padding: 10px; */
   text-align: center;
 }
+#timeDate #times{
+  font-size: 24px;
+}
 
 #backToTopBtn {
   display: block;
