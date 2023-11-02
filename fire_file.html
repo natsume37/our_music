@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="./js/bootstrap-4.6.2-dist/css/bootstrap.css"></script>
+    <link rel="stylesheet" href="./js/bootstrap-4.6.2-dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/my_style.css" />
+  </head>
+  <body>
+    <div id="nav">
+      <nav>
+        <div class="logo">
+          <img src="./imgs/logo.png" alt="Logo" />
+        </div>
+        <h2 id="logo">OurMusic</h2>
+        <ul class="nav_ul">
+          <li><a href="#">首页</a></li>
+          <li><a href="#">我的音乐</a></li>
+          <li><a href="#">我的关注</a></li>
+          <li><a href="#">音乐人</a></li>
+        </ul>
+        <input id="search_my" type="text" />
+        <button id="btn_my" type="button">搜索</button>
+        <span><a href="./logo_re.html">登录</a></span>
+        <span><a href="./register.html">注册</a></span>
+      </nav>
+      <div class="nav_div2">
+        <ul class="navbar2_ul">
+          <li><a href="#">推荐</a></li>
+          <li><a href="#">排行榜</a></li>
+          <li><a href="#">歌单</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="bang_dan">
+      <h2 style="margin-top: 50px">榜单</h2>
+      <hr
+        width="80%"
+        size="3"
+        color="#ee7959"
+        style="filter: alpha(opacity=100, finishopacity=0, style=1)"
+      />
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <div id="bang_list">
+              <ul class="list-group">
+                <li class="list-group-item bang_ceshi">新歌榜</li>
+
+                <li class="list-group-item songs_ID" id="" name="">歌名</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div id="bang_list">
+              <ul class="list-group">
+                <li class="list-group-item bang_ceshi">新歌榜</li>
+
+                <li class="list-group-item songs_ID" id="" name="">歌名</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div id="bang_list">
+              <ul class="list-group">
+                <li class="list-group-item bang_ceshi">原创榜</li>
+
+                <li class="list-group-item songs_ID" id="" name="">歌名</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="music_out_c">
+      <span class="songs_name">OurMusic-极简</span>
+      <!-- {# http://music.163.com/song/media/outer/url?id={i[0][0]}.mp3#} -->
+      <audio
+        src="http://music.163.com/song/media/outer/url?id=31877628.mp3"
+        controls
+        preload="auto"
+      ></audio>
+    </div>
+    <footer>
+      <div id="footer">
+        <box id="footer_box1">
+          <a href="#" class="footer_a">服务条款</a>
+          <a href="#" class="footer_a">隐私政策</a>
+          <a href="#" class="footer_a">儿童隐私政策</a>
+          <a href="#" class="footer_a">版权投诉</a>
+          <a href="#" class="footer_a">投资者关系</a>
+          <a href="#" class="footer_a">广告合作</a>
+          <a href="#" class="footer_a">联系我们</a>
+        </box>
+        <box id="footer_box2">
+          <a href="#" class="footer_a">廉正举报</a>
+          <div>
+            不良信息举报邮箱:
+            <a href="#" class="footer_a">2047672631@qq.com</a>
+          </div>
+          <div>
+            客服热线：
+            <a href="#" class="footer_a">95163298</a>
+          </div>
+        </box>
+        <box class="itme">
+          <p id="timeDate"></p>
+          <p id="times"></p>
+        </box>
+        <a href="#" class="badge badge-primary">about our</a>
+        <a
+          href="https://github.com/natsume37/flask_basic"
+          class="badge badge-secondary"
+          >gitHub</a
+        >
+        <a href="#" class="badge badge-success">Blog</a>
+      </div>
+      <button id="backToTopBtn" onclick="scrollToTop()">返回顶部</button>
+    </footer>
+  </body>
+  <script>
+        // {#音乐播放特效#}
+    let span_music_name = document.querySelector('#music_out_c span');
+    let auto_music = document.querySelector("#music_out_c audio");
+    let songs_lis = document.querySelectorAll('.songs_ID')
+    // {#console.log(span_music_name,auto_music,songs_lis)#}
+    for (let song of songs_lis) {
+        song.addEventListener('click', function () {
+            {#alert("点击了")#}
+            let id = song.id
+            span_music_name.innerHTML = song.innerHTML;
+            auto_music.src = `http://music.163.com/song/media/outer/url?id=${id}.mp3`
+            auto_music.play()
+        })
+    }
+  </script>
+</html>

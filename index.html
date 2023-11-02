@@ -25,6 +25,8 @@
         </ul>
         <input id="search_my" type="text" />
         <button id="btn_my" type="button">搜索</button>
+        <span><a href="./logo_re.html">登录</a></span>
+        <span><a href="./register.html">注册</a></span>
       </nav>
       <div class="nav_div2">
         <ul class="navbar2_ul">
@@ -375,15 +377,16 @@
         }
         img_change(nextgo);
       });
-      // foot
+
+      // 返回顶部按钮
       window.onscroll = function () {
         scrollFunction();
       };
 
       function scrollFunction() {
         if (
-          document.body.scrollTop > 10 ||
-          document.documentElement.scrollTop > 10
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
         ) {
           // 显示返回顶部按钮
           document.getElementById("backToTopBtn").style.display = "block";
@@ -392,7 +395,6 @@
           document.getElementById("backToTopBtn").style.display = "none";
         }
       }
-
       // 平滑滚动到页面顶部
       function scrollToTop() {
         document.body.scrollTop = 0; // Safari
